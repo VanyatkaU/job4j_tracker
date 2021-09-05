@@ -4,8 +4,7 @@ public class Cat {
     private String food;
     private String name;
     public void show() {
-        System.out.println(this.name);
-        System.out.println(this.food);
+        System.out.println(this.name + " " + this.food);
     }
     public void giveNick(String nick) {
         this.name = nick;

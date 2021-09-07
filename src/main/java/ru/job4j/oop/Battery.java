@@ -6,15 +6,15 @@ public class Battery {
         this.load = load;
     }
     public void exchange(Battery another) {
-        this.load = this.load + another.load;
-        another.load = 0;
+        another.load += this.load;
+        this.load = 0;
     }
 
     public static void main(String[] args) {
         Battery first = new Battery(23);
-        Battery second = new Battery(56);
-        System.out.println("First battery: " + first.load + " Second battery: " + second.load);
-        first.exchange(second);
-        System.out.println("First battery: " + first.load + " Second battery: " + second.load);
+        Battery another = new Battery(56);
+        System.out.println("First battery: " + first.load + " Another battery: " + another.load);
+        first.exchange(another);
+        System.out.println("First battery: " + first.load + " Another battery: " + another.load);
     }
 }

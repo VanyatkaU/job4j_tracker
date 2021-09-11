@@ -1,19 +1,15 @@
 package ru.job4j.oop;
 
 public class Cardiologist extends Doctor {
-    String experience;
-    String numberOfOperations;
-    String salary;
+    private final String examination;
 
-    public String getExperience() {
-        return experience;
-    }
+    public Cardiologist(String name, String surname, String education,
+                            int birthday, String brunch, String examination) {
+        super(name, surname, education, birthday, brunch);
+        this.examination = examination;
+        }
 
-    public String getNumberOfOperations() {
-        return numberOfOperations;
-    }
-
-    public String getSalary() {
-        return salary;
+    public String getExamination() {
+        return examination;
     }
 }

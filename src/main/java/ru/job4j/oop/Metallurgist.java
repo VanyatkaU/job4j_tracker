@@ -1,19 +1,15 @@
 package ru.job4j.oop;
 
 public class Metallurgist extends Engineer {
-    String direction;
-    String category;
-    String salary;
+    private final String tp;
 
-    public String getDirection() {
-        return direction;
+    public Metallurgist(String name, String surname, String education,
+                        int birthday, String brunch, String tp) {
+        super(name, surname, education, birthday, brunch);
+        this.tp = tp;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public String getSalary() {
-        return salary;
+    public String getTp() {
+        return tp;
     }
 }

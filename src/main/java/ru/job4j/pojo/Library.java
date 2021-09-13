@@ -26,7 +26,7 @@ public class Library {
         System.out.println("Shown only CleanCode");
         for (int index = 0; index < books.length; index++) {
             Book book = books[index];
-            if (book.getName().equals("CleanCode")) {
+            if ("CleanCode".equals(book.getName())) {
                 System.out.println(book.getName() + " - " + book.getPage());
             }
         }

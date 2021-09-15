@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Tracker {
     private final Item[] items = new Item[100];
@@ -29,7 +30,7 @@ public class Tracker {
         int i = 0;
         for (int index = 0; index < size - i; index++) {
             Item item = this.items[index];
-            if (item.getName() == key) {
+            if (Objects.equals(key, item.getName())) {
                 rsl[i++] = item;
             }
         }

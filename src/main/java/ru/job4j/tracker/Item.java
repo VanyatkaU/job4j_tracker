@@ -8,7 +8,7 @@ public class Item {
     private String name;
     private final LocalDateTime created = LocalDateTime.now();
 
-    public Item(String bug) {
+    public Item() {
     }
 
     public int getId() {

@@ -9,7 +9,7 @@ public class TrackerTest {
     @Test
     public void whenTestFindById() {
         Tracker tracker = new Tracker();
-        Item bug = new Item();
+        Item bug = new Item("Bug");
         Item item = tracker.add(bug);
         Item result = tracker.findById(item.getId());
         assertThat(result.getName(), is(item.getName()));
@@ -18,8 +18,8 @@ public class TrackerTest {
     @Test
     public void whenTestFindAll() {
         Tracker tracker = new Tracker();
-        Item first = new Item();
-        Item second = new Item();
+        Item first = new Item("First");
+        Item second = new Item("Second");
         tracker.add(first);
         tracker.add(second);
         Item result = tracker.findAll()[0];
@@ -29,13 +29,13 @@ public class TrackerTest {
     @Test
     public void whenTestFindByNameCheckArrayLength() {
         Tracker tracker = new Tracker();
-        Item first = new Item();
-        Item second = new Item();
+        Item first = new Item("First");
+        Item second = new Item("Second");
         tracker.add(first);
         tracker.add(second);
-        tracker.add(new Item());
-        tracker.add(new Item());
-        tracker.add(new Item());
+        tracker.add(new Item("First"));
+        tracker.add(new Item("Second"));
+        tracker.add(new Item("First"));
         Item[] result = tracker.findByName(first.getName());
         assertThat(result.length, is(3));
     }
@@ -43,13 +43,13 @@ public class TrackerTest {
     @Test
     public void whenTestFindByNameCheckSecondItemName() {
         Tracker tracker = new Tracker();
-        Item first = new Item();
-        Item second = new Item();
+        Item first = new Item("First");
+        Item second = new Item("Second");
         tracker.add(first);
         tracker.add(second);
-        tracker.add(new Item());
-        tracker.add(new Item());
-        tracker.add(new Item());
+        tracker.add(new Item("First"));
+        tracker.add(new Item("Second"));
+        tracker.add(new Item("First"));
         Item[] result = tracker.findByName(second.getName());
         assertThat(result[1].getName(), is(second.getName()));
     }

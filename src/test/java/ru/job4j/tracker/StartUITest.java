@@ -30,10 +30,10 @@ public class StartUITest {
     @Test
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
-        Item item = new Item("new item");
+        Item item = new Item("test item");
         tracker.add(item);
-        String[] answers = {String.valueOf(item.getId()), "deleted item"};
-        StartUI.deteleItem(new StubInput(answers), tracker);
+        String[] answers = {String.valueOf(item.getId())};
+        StartUI.deleteItem(new StubInput(answers), tracker);
         assertNull(tracker.findById(item.getId()));
     }
 }

@@ -33,12 +33,15 @@ public class ValidateInput implements Input {
         do {
             String rsl = in.askStr(question);
             if (!isNumber(rsl)) {
-                System.out.println("Please enter validate data again.");
-                continue;
+                try {
+                    out.println("Please enter validate data again.");
+                } catch (NumberFormatException nfe) {
+                    value = Integer.parseInt(rsl);
+                    invalid = false;
+                }
             }
-            value = Integer.parseInt(rsl);
-            invalid = false;
-        } while (invalid);
+        }
+        while (invalid);
         return value;
     }
 }

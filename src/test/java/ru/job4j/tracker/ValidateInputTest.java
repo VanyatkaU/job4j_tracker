@@ -53,7 +53,7 @@ public class ValidateInputTest {
                 new String[] {"-1"}
         );
         ValidateInput input = new ValidateInput(out, in);
-        int selected = input.askInt("Please enter validate data again.");
+        int selected = Integer.parseInt(input.askStr("Please enter validate data again."));
         assertThat(selected, is(-1));
     }
 }

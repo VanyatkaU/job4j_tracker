@@ -9,18 +9,6 @@ public class ValidateInput implements Input {
         this.in = input;
     }
 
-    private boolean isNumber(String value) {
-        boolean rsl = true;
-        char[] check = value.toCharArray();
-        for (char num : check) {
-            if (num < 48 || num > 57) {
-                rsl = false;
-                break;
-            }
-        }
-        return rsl;
-    }
-
     @Override
     public String askStr(String question) {
         return in.askStr(question);
@@ -30,22 +18,14 @@ public class ValidateInput implements Input {
     public int askInt(String question) {
         boolean invalid = true;
         int value = -1;
-        try {
-            value = in.askInt(question);
-        } catch (NumberFormatException nfe) {
-            out.println("Please enter validate data again.");
-            do {
-                String rsl = in.askStr(question);
-                if (!isNumber(rsl)) {
-                    out.println("Please enter validate data again.");
-                    continue;
-                }
-                value = Integer.parseInt(rsl);
+        do {
+            try {
+                value = in.askInt(question);
                 invalid = false;
-            } while (invalid);
-
-        }
+            } catch (NumberFormatException nfe) {
+                out.println("Please enter validate data again.");
+            }
+        } while (invalid);
         return value;
     }
 }
-

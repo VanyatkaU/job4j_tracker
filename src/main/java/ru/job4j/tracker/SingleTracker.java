@@ -32,10 +32,6 @@ public final class SingleTracker {
         return tracker.findByName(key);
     }
 
-    private int indexOf(int id) {
-        return Integer.parseInt(String.valueOf(id));
-    }
-
     public boolean replace(int id, Item item) {
         return tracker.replace(id, item);
     }

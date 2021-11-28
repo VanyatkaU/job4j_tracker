@@ -1,5 +1,6 @@
 package ru.job4j.lambda;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 public class FI {
@@ -10,7 +11,8 @@ public class FI {
                 new Attachment("image 2", 23)
         };
         Comparator<Attachment> comparator = (left, right) -> {
-            return left.getSize() - right.getSize();
+            return right.getSize() - left.getSize();
         };
+        Arrays.sort(atts, comparator);
     }
 }

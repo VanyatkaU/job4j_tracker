@@ -4,7 +4,7 @@ import ru.job4j.function.Predicate;
 
 import java.util.ArrayList;
 
-public class PhoneDictionary {
+class PhoneDictionary {
     private final ArrayList<Person> persons = new ArrayList<>();
 
     public void add(Person person) {

@@ -1,17 +1,17 @@
-package ru.job4j.search;
+package ru.job4j.function;
 
 import ru.job4j.function.Predicate;
 
 import java.util.ArrayList;
 
-class PhoneDictionary {
+public class PhoneDictionary {
     private final ArrayList<Person> persons = new ArrayList<>();
 
-    void add(Person person) {
+    public void add(Person person) {
         this.persons.add(person);
     }
 
-    ArrayList<Person> find(String key) {
+    public ArrayList<Person> find(String key) {
         Predicate<Person> combine = person -> person.getName().contains(key)
                 || person.getSurname().contains(key)
                 || person.getPhone().contains(key)

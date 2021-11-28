@@ -1,4 +1,4 @@
-package ru.job4j.search;
+package ru.job4j.function;
 
 import org.junit.Test;
 

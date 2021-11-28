@@ -7,11 +7,11 @@ import java.util.ArrayList;
 class PhoneDictionary {
     private final ArrayList<Person> persons = new ArrayList<>();
 
-    public void add(Person person) {
+    void add(Person person) {
         this.persons.add(person);
     }
 
-    public ArrayList<Person> find(String key) {
+    ArrayList<Person> find(String key) {
         Predicate<Person> combine = person -> person.getName().contains(key)
                 || person.getSurname().contains(key)
                 || person.getPhone().contains(key)

@@ -7,7 +7,7 @@ import java.util.Objects;
  * @author Ivan Karelkin
  * @version 1.0
  */
-public class Account {
+class Account {
     /**
      * Класс содержит поля: реквизиты и баланс
      */
@@ -20,43 +20,45 @@ public class Account {
      * @param balance баланс
      * Далее выполняем инкапсуляцию для ввода и получения реквизитов и баланса
      */
-    public Account(String requisite, double balance) {
+    Account(String requisite, double balance) {
         this.requisite = requisite;
         this.balance = balance;
     }
 
-    public String getRequisite() {
+    String getRequisite() {
         return requisite;
     }
 
-    public void setRequisite(String requisite) {
+    void setRequisite(String requisite) {
         this.requisite = requisite;
     }
 
-    public double getBalance() {
+    double getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    void setBalance(double balance) {
         this.balance = balance;
     }
 
     /**
      * Переопределенный метод сравнения для определения
      * соответствия реквизитов и счета
-     * @param o
-     * @return
+     * @param o объект
+     * @return реультат
      */
     @Override
     public boolean equals(Object o) {
+        boolean result;
         if (this == o) {
-            return true;
+            result = true;
+        } else if (o == null || getClass() != o.getClass()) {
+            result = false;
+        } else {
+            Account account = (Account) o;
+            result = Objects.equals(requisite, account.requisite);
         }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Account account = (Account) o;
-        return Objects.equals(requisite, account.requisite);
+        return result;
     }
 
     @Override

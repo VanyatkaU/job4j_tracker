@@ -7,7 +7,7 @@ import java.util.Objects;
  * @author Ivan Karelkin
  * @version 1.0
  */
-public class User {
+class User {
     /**
      * Класс содержит поля: номер паспорта и ФИО
      */
@@ -20,43 +20,44 @@ public class User {
      * @param username ФИО
      * Далее выплняем инкапсуляцию для ввода и получения номера паспорта и ФИО
      */
-    public User(String passport, String username) {
+    User(String passport, String username) {
         this.passport = passport;
         this.username = username;
     }
 
-    public String getPassport() {
+    String getPassport() {
         return passport;
     }
 
-    public void setPassport(String passport) {
+    void setPassport(String passport) {
         this.passport = passport;
     }
 
-    public String getUsername() {
+    String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    void setUsername(String username) {
         this.username = username;
     }
 
     /**
      * Переопределенный метод сравнения для определения
      * соответствия пользователя по номеру паспорта
-     * @param o
      * @return
      */
     @Override
     public boolean equals(Object o) {
+        boolean result;
         if (this == o) {
-            return true;
+            result = true;
+        } else if (o == null || getClass() != o.getClass()) {
+            result = false;
+        } else {
+            User user = (User) o;
+            result = Objects.equals(passport, user.passport);
         }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        User user = (User) o;
-        return Objects.equals(passport, user.passport);
+        return result;
     }
 
     @Override

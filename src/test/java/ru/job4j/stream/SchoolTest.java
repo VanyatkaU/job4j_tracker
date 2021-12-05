@@ -32,9 +32,9 @@ public class SchoolTest {
         List<Student> students = List.of(
                 new Student(20, "Surname2"),
                 new Student(30, "Surname3"),
-                new Student(30, "Surname3"),
+                new Student(40, "Surname3"),
                 new Student(80, "Surname8"),
-                new Student(80, "Surname8")
+                new Student(60, "Surname8")
         );
         School sc = new School();
         Map<String, Student> rsl = sc.collect(students);

@@ -7,7 +7,7 @@ import java.util.Objects;
  * @author Ivan Karelkin
  * @version 1.0
  */
-class Account {
+public class Account {
     /**
      * Класс содержит поля: реквизиты и баланс
      */
@@ -20,7 +20,7 @@ class Account {
      * @param balance баланс
      * Далее выполняем инкапсуляцию для ввода и получения реквизитов и баланса
      */
-    Account(String requisite, double balance) {
+    public Account(String requisite, double balance) {
         this.requisite = requisite;
         this.balance = balance;
     }
@@ -29,15 +29,15 @@ class Account {
         return requisite;
     }
 
-    void setRequisite(String requisite) {
+    public void setRequisite(String requisite) {
         this.requisite = requisite;
     }
 
-    double getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    void setBalance(double balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 

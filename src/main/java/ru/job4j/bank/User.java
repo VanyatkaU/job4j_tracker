@@ -7,7 +7,7 @@ import java.util.Objects;
  * @author Ivan Karelkin
  * @version 1.0
  */
-class User {
+public class User {
     /**
      * Класс содержит поля: номер паспорта и ФИО
      */
@@ -20,7 +20,7 @@ class User {
      * @param username ФИО
      * Далее выплняем инкапсуляцию для ввода и получения номера паспорта и ФИО
      */
-    User(String passport, String username) {
+    public User(String passport, String username) {
         this.passport = passport;
         this.username = username;
     }
@@ -29,7 +29,7 @@ class User {
         return passport;
     }
 
-    void setPassport(String passport) {
+    public void setPassport(String passport) {
         this.passport = passport;
     }
 
@@ -37,7 +37,7 @@ class User {
         return username;
     }
 
-    void setUsername(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 

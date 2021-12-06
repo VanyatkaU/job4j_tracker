@@ -25,7 +25,7 @@ public class User {
         this.username = username;
     }
 
-    public String getPassport() {
+    String getPassport() {
         return passport;
     }
 
@@ -33,7 +33,7 @@ public class User {
         this.passport = passport;
     }
 
-    public String getUsername() {
+    String getUsername() {
         return username;
     }
 
@@ -44,19 +44,20 @@ public class User {
     /**
      * Переопределенный метод сравнения для определения
      * соответствия пользователя по номеру паспорта
-     * @param o
      * @return
      */
     @Override
     public boolean equals(Object o) {
+        boolean result;
         if (this == o) {
-            return true;
+            result = true;
+        } else if (o == null || getClass() != o.getClass()) {
+            result = false;
+        } else {
+            User user = (User) o;
+            result = Objects.equals(passport, user.passport);
         }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        User user = (User) o;
-        return Objects.equals(passport, user.passport);
+        return result;
     }
 
     @Override

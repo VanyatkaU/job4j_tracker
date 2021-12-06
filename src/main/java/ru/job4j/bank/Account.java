@@ -25,7 +25,7 @@ public class Account {
         this.balance = balance;
     }
 
-    public String getRequisite() {
+    String getRequisite() {
         return requisite;
     }
 
@@ -44,19 +44,21 @@ public class Account {
     /**
      * Переопределенный метод сравнения для определения
      * соответствия реквизитов и счета
-     * @param o
-     * @return
+     * @param o объект
+     * @return реультат
      */
     @Override
     public boolean equals(Object o) {
+        boolean result;
         if (this == o) {
-            return true;
+            result = true;
+        } else if (o == null || getClass() != o.getClass()) {
+            result = false;
+        } else {
+            Account account = (Account) o;
+            result = Objects.equals(requisite, account.requisite);
         }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Account account = (Account) o;
-        return Objects.equals(requisite, account.requisite);
+        return result;
     }
 
     @Override

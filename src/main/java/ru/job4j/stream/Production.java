@@ -79,4 +79,17 @@ public class Production {
             System.out.println(production);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Production{"
+                + "workshopCode=" + workshopCode
+                + ", materialCode=" + materialCode
+                + ", employeeLogin='" + employeeLogin + '\''
+                + ", program=" + program
+                + ", detail='" + detail + '\''
+                + ", machine='" + machine + '\''
+                + ", condition='" + condition + '\''
+                + '}';
+    }
 }

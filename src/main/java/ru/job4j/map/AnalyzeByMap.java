@@ -28,7 +28,7 @@ public class AnalyzeByMap {
     }
 
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
-        Map<String, Integer> less = new LinkedHashMap<>();
+        Map<String, Integer> less = new HashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
                 less.computeIfPresent(subject.name(), (a, b) -> b + subject.score());
@@ -56,7 +56,7 @@ public class AnalyzeByMap {
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
-        Map<String, Integer> less = new LinkedHashMap<>();
+        Map<String, Integer> less = new HashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
                 less.computeIfPresent(subject.name(), (a, b) -> b + subject.score());

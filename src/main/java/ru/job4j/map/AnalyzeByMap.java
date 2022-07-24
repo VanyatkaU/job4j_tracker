@@ -5,69 +5,69 @@ import java.util.*;
 public class AnalyzeByMap {
     public static double averageScore(List<Pupil> pupils) {
         double sum = 0d;
-        int count = 0;
+        int lesson = 0;
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
                 sum += subject.score();
-                count++;
+                lesson++;
             }
         }
-        return sum / count;
+        return sum / lesson;
     }
 
     public static List<Label> averageScoreByPupil(List<Pupil> pupils) {
-        List<Label> rsl = new ArrayList<>();
+        List<Label> student = new ArrayList<>();
         for (Pupil pupil : pupils) {
             double sum = 0d;
             for (Subject subject : pupil.subjects()) {
                 sum += subject.score();
             }
-            rsl.add(new Label(pupil.name(), sum / pupil.subjects().size()));
+            student.add(new Label(pupil.name(), sum / pupil.subjects().size()));
         }
-        return rsl;
+        return student;
     }
 
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
-        Map<String, Integer> subj = new HashMap<>();
+        Map<String, Integer> less = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                subj.computeIfPresent(subject.name(), (a, b) -> b + subject.score());
-                subj.putIfAbsent(subject.name(), subject.score());
+                less.computeIfPresent(subject.name(), (a, b) -> b + subject.score());
+                less.putIfAbsent(subject.name(), subject.score());
             }
         }
-        List<Label> rsl = new ArrayList<>();
-        for (String sub : subj.keySet()) {
-            rsl.add(new Label(sub, subj.get(sub) / pupils.size()));
+        List<Label> lesson = new ArrayList<>();
+        for (String name : less.keySet()) {
+            lesson.add(new Label(name, less.get(name) / pupils.size()));
         }
-        return rsl;
+        return lesson;
     }
 
     public static Label bestStudent(List<Pupil> pupils) {
-        List<Label> rsl = new ArrayList<>();
+        List<Label> student = new ArrayList<>();
         for (Pupil pupil : pupils) {
             double sum = 0d;
             for (Subject subject : pupil.subjects()) {
                 sum += subject.score();
             }
-            rsl.add(new Label(pupil.name(), sum));
+            student.add(new Label(pupil.name(), sum));
         }
-        Collections.sort(rsl);
-        return rsl.get(rsl.size() - 1);
+        Collections.sort(student);
+        return student.get(student.size() - 1);
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
-        Map<String, Integer> subj = new HashMap<>();
+        Map<String, Integer> less = new HashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                subj.computeIfPresent(subject.name(), (a, b) -> b + subject.score());
-                subj.putIfAbsent(subject.name(), subject.score());
+                less.computeIfPresent(subject.name(), (a, b) -> b + subject.score());
+                less.putIfAbsent(subject.name(), subject.score());
             }
         }
-        List<Label> rsl = new ArrayList<>();
-        for (String sub : subj.keySet()) {
-            rsl.add(new Label(sub, subj.get(sub)));
+        List<Label> name = new ArrayList<>();
+        for (String lesson : less.keySet()) {
+            name.add(new Label(lesson, less.get(lesson)));
         }
-        Collections.sort(rsl);
-        return rsl.get(rsl.size() - 1);
+        Collections.sort(name);
+        return name.get(name.size() - 1);
     }
 }

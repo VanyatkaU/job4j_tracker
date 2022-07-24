@@ -4,7 +4,7 @@ import java.util.*;
 
 public class AnalyzeByMap {
     public static double averageScore(List<Pupil> pupils) {
-        double sum = 0d;
+        double sum = 0D;
         int lesson = 0;
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
@@ -18,7 +18,7 @@ public class AnalyzeByMap {
     public static List<Label> averageScoreByPupil(List<Pupil> pupils) {
         List<Label> student = new ArrayList<>();
         for (Pupil pupil : pupils) {
-            double sum = 0d;
+            double sum = 0D;
             for (Subject subject : pupil.subjects()) {
                 sum += subject.score();
             }
@@ -45,7 +45,7 @@ public class AnalyzeByMap {
     public static Label bestStudent(List<Pupil> pupils) {
         List<Label> student = new ArrayList<>();
         for (Pupil pupil : pupils) {
-            double sum = 0d;
+            double sum = 0D;
             for (Subject subject : pupil.subjects()) {
                 sum += subject.score();
             }

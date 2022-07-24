@@ -56,7 +56,7 @@ public class AnalyzeByMap {
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
-        Map<String, Integer> less = new HashMap<>();
+        Map<String, Integer> less = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
                 less.computeIfPresent(subject.name(), (a, b) -> b + subject.score());

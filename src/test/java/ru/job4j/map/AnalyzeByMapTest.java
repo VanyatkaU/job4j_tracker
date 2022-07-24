@@ -33,7 +33,7 @@ class AnalyzeByMapTest {
                         )
                 )
         );
-        assertThat(average).isCloseTo(74.44, offset(0.01D));
+        assertThat(average).isCloseTo(74.44D, offset(0.01D));
     }
 
     @Test

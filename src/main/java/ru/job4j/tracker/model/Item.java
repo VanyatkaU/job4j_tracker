@@ -12,7 +12,7 @@ public class Item implements Comparable<Item> {
 
     private LocalDateTime created = LocalDateTime.now();
 
-    public Item(int id, String name, LocalDateTime created) {
+    public Item() {
     }
 
     public Item(String name) {
@@ -22,6 +22,12 @@ public class Item implements Comparable<Item> {
     public Item(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Item(int id, String name, LocalDateTime created) {
+        this.id = id;
+        this.name = name;
+        this.created = created;
     }
 
     public int getId() {
@@ -57,13 +63,12 @@ public class Item implements Comparable<Item> {
             return false;
         }
         Item item = (Item) o;
-        return id == item.id && Objects.equals(name, item.name)
-               && Objects.equals(created, item.created);
+        return id == item.id && Objects.equals(name, item.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, created);
+        return Objects.hash(id, name);
     }
 
     @Override

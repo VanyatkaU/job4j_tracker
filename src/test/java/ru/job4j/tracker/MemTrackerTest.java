@@ -3,7 +3,6 @@ package ru.job4j.tracker;
 import org.junit.Test;
 import ru.job4j.tracker.model.Item;
 
-import java.sql.CallableStatement;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -11,7 +10,8 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.IsNull.nullValue;
 
-public class TrackerTest {
+public class MemTrackerTest {
+
     @Test
     public void whenTestFindById() {
         MemTracker memTracker = new MemTracker();
@@ -61,28 +61,22 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenReplace(CallableStatement resultSet) throws SQLException {
+    public void whenReplace() {
         MemTracker memTracker = new MemTracker();
-        Item bug = new Item(resultSet.getInt("id"),
-                resultSet.getString("name"),
-                resultSet.getTimestamp("created").toLocalDateTime());
+        Item bug = new Item();
         bug.setName("Bug");
         memTracker.add(bug);
         int id = bug.getId();
-        Item bugWithDesc = new Item(resultSet.getInt("id"),
-                resultSet.getString("name"),
-                resultSet.getTimestamp("created").toLocalDateTime());
+        Item bugWithDesc = new Item();
         bugWithDesc.setName("Bug with description");
         memTracker.replace(id, bugWithDesc);
         assertThat(memTracker.findById(id).getName(), is("Bug with description"));
     }
 
     @Test
-    public void whenDelete(CallableStatement resultSet) throws SQLException {
+    public void whenDelete() {
         MemTracker memTracker = new MemTracker();
-        Item bug = new Item(resultSet.getInt("id"),
-                resultSet.getString("name"),
-                resultSet.getTimestamp("created").toLocalDateTime());
+        Item bug = new Item();
         bug.setName("Bug");
         memTracker.add(bug);
         int id = bug.getId();

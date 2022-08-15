@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 import org.junit.Test;
 import ru.job4j.tracker.model.Item;
 
-import java.sql.ResultSet;
+import java.sql.CallableStatement;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -61,9 +61,8 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenReplace() throws SQLException {
+    public void whenReplace(CallableStatement resultSet) throws SQLException {
         MemTracker memTracker = new MemTracker();
-        ResultSet resultSet = null;
         Item bug = new Item(resultSet.getInt("id"),
                 resultSet.getString("name"),
                 resultSet.getTimestamp("created").toLocalDateTime());
@@ -79,9 +78,8 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenDelete() throws SQLException {
+    public void whenDelete(CallableStatement resultSet) throws SQLException {
         MemTracker memTracker = new MemTracker();
-        ResultSet resultSet = null;
         Item bug = new Item(resultSet.getInt("id"),
                 resultSet.getString("name"),
                 resultSet.getTimestamp("created").toLocalDateTime());

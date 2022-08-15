@@ -12,7 +12,7 @@ public class Item implements Comparable<Item> {
 
     private LocalDateTime created = LocalDateTime.now();
 
-    public Item() {
+    public Item(int id, String name, LocalDateTime created) {
     }
 
     public Item(String name) {

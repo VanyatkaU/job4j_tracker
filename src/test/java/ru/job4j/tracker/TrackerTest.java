@@ -3,6 +3,8 @@ package ru.job4j.tracker;
 import org.junit.Test;
 import ru.job4j.tracker.model.Item;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
@@ -59,22 +61,30 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenReplace() {
+    public void whenReplace() throws SQLException {
         MemTracker memTracker = new MemTracker();
-        Item bug = new Item();
+        ResultSet resultSet = null;
+        Item bug = new Item(resultSet.getInt("id"),
+                resultSet.getString("name"),
+                resultSet.getTimestamp("created").toLocalDateTime());
         bug.setName("Bug");
         memTracker.add(bug);
         int id = bug.getId();
-        Item bugWithDesc = new Item();
+        Item bugWithDesc = new Item(resultSet.getInt("id"),
+                resultSet.getString("name"),
+                resultSet.getTimestamp("created").toLocalDateTime());
         bugWithDesc.setName("Bug with description");
         memTracker.replace(id, bugWithDesc);
         assertThat(memTracker.findById(id).getName(), is("Bug with description"));
     }
 
     @Test
-    public void whenDelete() {
+    public void whenDelete() throws SQLException {
         MemTracker memTracker = new MemTracker();
-        Item bug = new Item();
+        ResultSet resultSet = null;
+        Item bug = new Item(resultSet.getInt("id"),
+                resultSet.getString("name"),
+                resultSet.getTimestamp("created").toLocalDateTime());
         bug.setName("Bug");
         memTracker.add(bug);
         int id = bug.getId();

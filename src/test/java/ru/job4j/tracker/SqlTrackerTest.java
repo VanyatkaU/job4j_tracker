@@ -64,7 +64,7 @@ public class SqlTrackerTest {
     public void whenReplacementWasSuccessful() {
         SqlTracker tracker = new SqlTracker(cn);
         Item item = tracker.add(new Item("Ivan"));
-        Item item1 = tracker.add(new Item("Stepan"));
+        Item item1 = new Item("Stepan");
         tracker.replace(item.getId(), item1);
         MatcherAssert.assertThat(tracker.findById(item.getId()).getName(), is(item1.getName()));
     }
@@ -73,7 +73,7 @@ public class SqlTrackerTest {
     public void whenReplacementWasNonSuccessful() {
         SqlTracker tracker = new SqlTracker(cn);
         Item item = tracker.add(new Item("Ivan"));
-        Item item1 = tracker.add(new Item("Stepan"));
+        Item item1 = new Item("Stepan");
         tracker.replace(item.getId() + 1, item1);
         MatcherAssert.assertThat(tracker.findById(item.getId()).getName(), is(item.getName()));
     }

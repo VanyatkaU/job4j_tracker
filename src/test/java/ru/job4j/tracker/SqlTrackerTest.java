@@ -63,9 +63,8 @@ public class SqlTrackerTest {
     @Test
     public void whenReplacementWasSuccessful() {
         SqlTracker tracker = new SqlTracker(cn);
-        Item item = new Item("Ivan");
-        Item item1 = new Item("Stepan");
-        tracker.add(item);
+        Item item = tracker.add(new Item("Ivan"));
+        Item item1 = tracker.add(new Item("Stepan"));
         tracker.replace(item.getId(), item1);
         MatcherAssert.assertThat(tracker.findById(item.getId()).getName(), is(item1.getName()));
     }
@@ -73,9 +72,8 @@ public class SqlTrackerTest {
     @Test
     public void whenReplacementWasNonSuccessful() {
         SqlTracker tracker = new SqlTracker(cn);
-        Item item = new Item("Ivan");
-        Item item1 = new Item("Stepan");
-        tracker.add(item);
+        Item item = tracker.add(new Item("Ivan"));
+        Item item1 = tracker.add(new Item("Stepan"));
         tracker.replace(item.getId() + 1, item1);
         MatcherAssert.assertThat(tracker.findById(item.getId()).getName(), is(item.getName()));
     }
@@ -83,8 +81,7 @@ public class SqlTrackerTest {
     @Test
     public void whenDeleteWasSuccessful() {
         SqlTracker tracker = new SqlTracker(cn);
-        Item item = new Item("Ivan");
-        tracker.add(item);
+        Item item = tracker.add(new Item("Ivan"));
         tracker.delete(item.getId());
         MatcherAssert.assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
@@ -92,8 +89,7 @@ public class SqlTrackerTest {
     @Test
     public void whenDeleteWasNonSuccessful() {
         SqlTracker tracker = new SqlTracker(cn);
-        Item item = new Item("Stepan");
-        tracker.add(item);
+        Item item = tracker.add(new Item("Stepan"));
         tracker.delete(1);
         MatcherAssert.assertThat(tracker.findById(item.getId()), is(item));
     }
@@ -101,10 +97,8 @@ public class SqlTrackerTest {
     @Test
     public void whenFindAllItems() {
         SqlTracker tracker = new SqlTracker(cn);
-        Item item = new Item("Ivan");
-        Item item1 = new Item("Stepan");
-        tracker.add(item);
-        tracker.add(item1);
+        Item item = tracker.add(new Item("Ivan"));
+        Item item1 = tracker.add(new Item("Stepan"));
         MatcherAssert.assertThat(tracker.findAll(), is(Arrays.asList(item, item1)));
     }
 
@@ -117,40 +111,32 @@ public class SqlTrackerTest {
     @Test
     public void whenFindByNameItem() {
         SqlTracker tracker = new SqlTracker(cn);
-        Item item = new Item("Ivan");
-        Item item1 = new Item("Stepan");
-        tracker.add(item);
-        tracker.add(item1);
+        Item item = tracker.add(new Item("Ivan"));
+        Item item1 = tracker.add(new Item("Stepan"));
         MatcherAssert.assertThat(tracker.findByName("Ivan"), is(List.of(item)));
     }
 
     @Test
     public void whenNonFindByNameItem() {
         SqlTracker tracker = new SqlTracker(cn);
-        Item item = new Item("Ivan");
-        Item item1 = new Item("Stepan");
-        tracker.add(item);
-        tracker.add(item1);
+        Item item = tracker.add(new Item("Ivan"));
+        Item item1 = tracker.add(new Item("Stepan"));
         MatcherAssert.assertThat(tracker.findByName("Alex"), is(Collections.emptyList()));
     }
 
     @Test
     public void whenFindByIdItem() {
         SqlTracker tracker = new SqlTracker(cn);
-        Item item = new Item("Ivan");
-        Item item1 = new Item("Stepan");
-        tracker.add(item);
-        tracker.add(item1);
+        Item item = tracker.add(new Item("Ivan"));
+        Item item1 = tracker.add(new Item("Stepan"));
         MatcherAssert.assertThat(tracker.findById(item1.getId()), is(item1));
     }
 
     @Test
     public void whenNonFindByIdItem() {
         SqlTracker tracker = new SqlTracker(cn);
-        Item item = new Item("Ivan");
-        Item item1 = new Item("Stepan");
-        tracker.add(item);
-        tracker.add(item1);
+        Item item = tracker.add(new Item("Ivan"));
+        Item item1 = tracker.add(new Item("Stepan"));
         MatcherAssert.assertThat(tracker.findById(3), is(nullValue()));
     }
 }

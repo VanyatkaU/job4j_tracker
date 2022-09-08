@@ -1,9 +1,13 @@
 package ru.job4j.tracker;
 
+import ru.job4j.tracker.gc.FindAll;
+import ru.job4j.tracker.gc.UserActionDelete;
+import ru.job4j.tracker.gc.UserActonAdd;
+
 import java.util.List;
 
 public class StartUI {
-    private Output out;
+    private static Output out;
 
     public StartUI(Output out) {
         this.out = out;
@@ -36,7 +40,7 @@ public class StartUI {
 
     public static void main(String[] args) {
         Input input = new ValidateInput(
-                new ConsoleInput());
+                out, new ConsoleInput());
         Output output = new ConsoleOutput();
         try (SqlTracker tracker = new SqlTracker()) {
             tracker.init();
@@ -46,6 +50,9 @@ public class StartUI {
                     new DeleteAction(output),
                     new FindByIdAction(output),
                     new FindByNameAction(output),
+                    new UserActonAdd(output),
+                    new UserActionDelete(output),
+                    new FindAll(output),
                     new Exit()
             );
             new StartUI(output).init(input, tracker, actions);

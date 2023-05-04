@@ -17,7 +17,7 @@ import java.util.*;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 
-public class SqlTrackerTest {
+public class  SqlTrackerTest {
 
     private static Connection cn;
 

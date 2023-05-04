@@ -45,8 +45,8 @@ public class StartUITest {
                 "Menu:" + ln
                         + "0. Edit item" + ln
                         + "1. Exit Program" + ln
-                        + "=== Edit item ====" + ln
-                        + "Заявка изменена успешно." + ln
+                        + "=== Edit item ===" + ln
+                        + "Заявка успешно изменена." + ln
                         + "Menu:" + ln
                         + "0. Edit item" + ln
                         + "1. Exit Program" + ln

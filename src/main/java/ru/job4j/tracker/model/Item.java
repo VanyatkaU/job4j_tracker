@@ -11,8 +11,10 @@ public class Item implements Comparable<Item> {
     private String name;
 
     private LocalDateTime created = LocalDateTime.now();
+    private int quantity;
 
-    public Item() {
+    public Item(int quantity) {
+        this.quantity = quantity;
     }
 
     public Item(String name) {
